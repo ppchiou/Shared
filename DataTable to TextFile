@@ -1,0 +1,17 @@
+// Write DataTable result to Text File
+DataTable table = // You data table values;
+ 
+       var result = new StringBuilder(); 
+        foreach (DataRow row in table.Rows)         
+        {             
+            for (int i = 0; i < table.Columns.Count; i++)             
+            {                 
+                result.Append(row[i].ToString());                 
+                result.Append(i == table.Columns.Count - 1 ? "\n" : ",");             
+            }
+            result.AppendLine();
+        }
+ 
+        StreamWriter objWriter = new StreamWriter("C:\\test.txt", false);
+        objWriter.WriteLine(result.ToString());
+        objWriter.Close();
